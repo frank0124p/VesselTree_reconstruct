@@ -4,12 +4,11 @@ load skel1.mat
 [r,c,s]=size(skel1);
 result=zeros(r,c,s);
 shortest_result=zeros(r,c,s);
+
 tic;
 
-%Test
 
-
-D=distanceMatrix(no_zero); % distance matrix
+D=distanceMatrix(no_zero); % distance matrix           
 
 [n,~]=size(no_zero);
 
@@ -24,6 +23,7 @@ for i=1:n
     end
     connect_matrix(i,i)=0;
 end  
+
 %row and column do it one time each
 for i=1:n
     temp=D(i,:);
@@ -39,6 +39,11 @@ end
 S = sparse(connect_matrix);
 
 [Tree, pred] = graphminspantree(S);
+
+
+
+
+
 %Minimal Spanning tree-----------------
 [r,c]=find(Tree);
 [ind,~]=size(r);
