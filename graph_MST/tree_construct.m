@@ -1,14 +1,13 @@
 clear;clc;close all;
-load no_zero.mat %load all node in the result
-load skel1.mat
+load no_zero.mat  %load all node in the result---- parameter: no_zero
+load skel1.mat  %parameter : skel1
 [r,c,s]=size(skel1);
 result=zeros(r,c,s);
-shortest_result=zeros(r,c,s);
 
 tic;
 
-
-D=distanceMatrix(no_zero); % distance matrix           
+ % Distance matrix       
+D=distanceMatrix(no_zero);    
 
 [n,~]=size(no_zero);
 
@@ -40,7 +39,7 @@ S = sparse(connect_matrix);
 
 [Tree, pred] = graphminspantree(S);
 
-
+%Processing the graph to delete the 
 
 
 
@@ -64,23 +63,6 @@ for i=1:ind
 
 end
 
-%Shortest Spanning tree-----------------
-% for allnode=1:n
-% [dist, path, predshort] = graphshortestpath(S,allnode);
-% for i=1:n
-% temp=path{i};
-% if temp==inf
-%     break;
-% end
-% [~,path_n]=size(temp);
-% for j=1:path_n
-%     X=no_zero(temp(:,j),1);
-%     Y=no_zero(temp(:,j),2);
-%     Z=no_zero(temp(:,j),3);
-%     shortest_result(Y,X,Z)=1;
-% end
-% end
-% end
 figure,imshow(max(skel1,[],3));
 
 figure,imshow(max(result,[],3));
