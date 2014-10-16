@@ -34,12 +34,11 @@ end
 index_branch=find(ConnectNode(:,4)>=2);
 
 [index,~]=size(index_branch);
-BranchNode=zeros(index,4);
+BranchNode=zeros(index,3);
 for i=1:index
-    BranchNode(i,:)=ConnectNode(index_branch(i),:);
+    BranchNode(i,:)=
 end
 
-save BranchNode.mat BranchNode
 
 %Plot the Branch Point & vessel Center Point
 [n,~]=size(center_pts);
